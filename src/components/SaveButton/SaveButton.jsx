@@ -13,11 +13,16 @@ const SaveButton = ({ pin, user, classes }) => {
       window.alert('You must sign in to be able to save pins');
       return;
     }
-    if (!isPinSaved) {
+    if (!isPinSaved && !loading) {
       setLoading(true);
-      await savePinByCurrentUser(pin.id, user?._id).then(() => setIsPinSaved(true));
-      setLoading(false);
+      try {
+        await savePinByCurrentUser(pin.id, user?._id);
+        setIsPinSaved(true);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
+    setLoading(false);
   };
   return (
     <button

@@ -16,11 +16,11 @@ const Home = () => {
   return (
     user &&
     userIsLoaded && (
-      <div className="flex bg-gray-50 md:flex-row flex-col flex-1 w-screen  h-screen transition-height duration-75 ease-in-out ">
+      <div className="flex bg-gray-50 md:flex-row flex-col transition-height duration-75 ease-in-out ">
         <SideBarContextProvider>
           <Sidebar />
         </SideBarContextProvider>
-        <div className="mt-12 md:mt-0 w-full">
+        <div className="mt-12 md:mt-0">
           <Routes>
             <Route path="/user-profile/:userId" element={<UserProfile />} />
             <Route path="/*" element={<Pins />} />
